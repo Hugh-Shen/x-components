@@ -2,4 +2,13 @@ import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+import Icon from '@xc/components/icon'
+
+const app = createApp(App)
+
+const plugins = [Icon]
+
+plugins.forEach(plugin => app.use(plugin))
+
+
+app.mount('#app')
