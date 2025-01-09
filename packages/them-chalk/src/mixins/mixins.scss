@@ -1,0 +1,35 @@
+@use 'config' as *;
+@forward 'config';
+
+
+@mixin b($block) {
+  $B: $namespace + '-' + $block;
+  .#{$B} {
+    @content;
+  }
+}
+
+@mixin e($element) {
+  @at-root {
+    #{& + $element-soparator + $element} {
+      @content;
+    }
+  }
+}
+
+@mixin m($modifier) {
+  @at-root {
+    #{& + $modifior-soparator + $modifier} {
+      @content;
+    }
+  }
+}
+
+
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}

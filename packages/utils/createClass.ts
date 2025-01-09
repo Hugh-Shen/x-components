@@ -39,3 +39,6 @@ const createNamespace = (name: string) => {
   const namespace = `x-${name}`
   return createBEM(namespace)
 }
+
+
+export default createNamespace

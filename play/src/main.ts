@@ -3,6 +3,7 @@ import './style.css'
 import App from './App.vue'
 
 import Icon from '@xc/components/icon'
+import '@xc/them-chalk/src/index.scss'
 
 const app = createApp(App)
 
