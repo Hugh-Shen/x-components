@@ -21,19 +21,8 @@ const compile = () => {
 }
 
 const copyFiles = () => {
-  // 判断是否有对应的目录
-  const path = './dist/css'
-  const rootDistDir = `${rootPath}/dist`
-  const hasFiles = existsSync(resolvePath(path))
-  const hasDistDir = existsSync(rootDistDir)
-
-  if (hasFiles) {
-    if (!hasDistDir) {
-      mkdirSync(rootDistDir)
-    }
-
-    promises.cp(resolvePath(path), rootDistDir, { recursive: true })
-  }
+  return src(resolvePath('./dist/**'))
+  .pipe(dest(rootResolvePath('./dist/them-chalk')))
 }
 
 export default series(
