@@ -1,5 +1,5 @@
 import { spawn } from 'child_process'
-import { rootPath } from '@xc/utils/paths'
+import { rootPath } from './utils/paths'
 
 export const withTashName = (name: string, fn: any) => {
   return Object.assign(fn, { displayName: name })

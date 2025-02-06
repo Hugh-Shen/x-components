@@ -3,8 +3,7 @@ import dartSass from 'sass'
 import gulpSass from 'gulp-sass'
 import gulpAutoprefixer from 'gulp-autoprefixer'
 import gulpCleanCss from 'gulp-clean-css'
-import { existsSync, mkdirSync, promises } from 'fs'
-import { rootPath, rootResolvePath } from '@xc/utils/paths'
+import { rootPath, rootResolvePath } from '../../build/utils/paths'
 import path from 'path'
 
 const resolvePath = (dir: string) => path.resolve(__dirname, dir)

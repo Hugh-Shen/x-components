@@ -26,6 +26,7 @@
     "gulp-autoprefixer": "^9.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-sass": "^6.0.0",
+    "gulp-typescript": "6.0.0-alpha.1",
     "sass": "^1.83.4",
     "sass-embedded": "^1.83.1",
     "sucrase": "^3.35.0"
