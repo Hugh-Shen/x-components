@@ -1,15 +1,15 @@
 import Icon from './src/icon.vue'
-import type { IconOptions } from './src/icon'
+import type { IconOptions as OriginalIconOptions } from './src/icon'
 
-// 确保组件名称与注册名称一致（kebab-case）
+// 重新导出原始类型
+export type IconOptions = OriginalIconOptions
+
+// 导出组件实例类型
+export type XIconInstance = InstanceType<typeof Icon>
+
+// 全局组件类型声明
 declare module 'vue' {
   export interface GlobalComponents {
     'x-icon': typeof Icon
   }
 }
-
-// 导出组件实例类型
-export type XIconInstance = InstanceType<typeof Icon>
-
-// 导出组件 props 类型，方便用户使用
-export { IconOptions }
