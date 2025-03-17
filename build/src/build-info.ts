@@ -22,11 +22,11 @@ export const buildConfig: Record<Module, BuildInfo> = {
   esm: {
     format: 'esm',
     output: {
-      path: path.resolve(buildOutput, 'es'),
-      name: 'es',
+      path: path.resolve(buildOutput, 'esm'),
+      name: 'esm',
     },
     bundle: {
-      path: 'es',
+      path: 'esm',
     },
     module: 'ESNext'
   },
@@ -39,7 +39,7 @@ export const buildConfig: Record<Module, BuildInfo> = {
     bundle: {
       path: 'lib',
     },
-    module: 'ESNext'
+    module: 'CommonJS' // 修正为 CommonJS
   },
 }
 

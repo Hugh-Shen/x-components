@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Vue 组件库",
   "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "es/index.d.ts",
+  "module": "esm/index.js",
+  "types": "esm/index.d.ts",
   "files": [
-    "es",
+    "esm",
     "lib"
   ],
   "sideEffects": [
@@ -17,8 +17,8 @@
   },
   "exports": {
     ".": {
-      "types": "./es/index.d.ts",
-      "import": "./es/index.js",
+      "types": "./esm/index.d.ts",
+      "import": "./esm/index.js",
       "require": "./lib/index.js"
     }
   },

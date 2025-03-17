@@ -1,14 +1,20 @@
-import XIcon from './src/icon.vue'
-import { withInstall } from '@xc/utils/withInstall'
-
+import { App } from 'vue'
+import Icon from './src/icon.vue'
+import { iconProps } from './src/icon'
+import type { IconOptions } from './src/icon'
 // 导入类型定义
-import './types'
+import type { XIconInstance } from './types'
 
-// 导入样式
-import '../../them-chalk/src/icon.scss'
+// 导出组件
+export { Icon }
 
-export { XIcon }
+// 导出类型
+export type { IconOptions, XIconInstance }
+export { iconProps }
 
-export default withInstall(XIcon)
-
-export * from './src/icon'
+// 默认导出
+export default {
+  install(app: App) {
+    app.component('x-icon', Icon)
+  }
+}

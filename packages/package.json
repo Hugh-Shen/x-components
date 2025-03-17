@@ -3,24 +3,24 @@
   "version": "1.0.0",
   "description": "A Vue 3 UI Component Library",
   "main": "lib/index.js",
-  "module": "es/index.js",
+  "module": "esm/index.js",
   "types": "index.d.ts",
   "style": "theme-chalk/index.css",
   "exports": {
     ".": {
       "types": "./index.d.ts",
-      "import": "./es/index.js",
+      "import": "./esm/index.js",
       "require": "./lib/index.js"
     },
-    "./es": "./es/index.js",
+    "./esm": "./esm/index.js",
     "./lib": "./lib/index.js",
-    "./es/*": "./es/*",
+    "./esm/*": "./esm/*",
     "./lib/*": "./lib/*",
     "./theme-chalk/*": "./theme-chalk/*",
     "./package.json": "./package.json"
   },
   "files": [
-    "es",
+    "esm",
     "lib",
     "theme-chalk",
     "index.d.ts",
@@ -37,7 +37,7 @@
   },
   "sideEffects": [
     "theme-chalk/**/*.css",
-    "es/**/style/*",
+    "esm/**/style/*",
     "lib/**/style/*"
   ]
 }

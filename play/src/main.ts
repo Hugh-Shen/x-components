@@ -8,7 +8,7 @@ import App from './App.vue'
 // import '../../packages/them-chalk/src/index.scss'
 
 // 或者使用构建产物（取消注释以下代码）
-import XComponents from '../../dist/es/index.js'
+import XComponents from '../../dist/esm/index.js'
 import '../../dist/them-chalk/index.css'
 
 const app = createApp(App)

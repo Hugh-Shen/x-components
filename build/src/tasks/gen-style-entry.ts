@@ -1,6 +1,6 @@
 import path from 'path'
 import fs from 'fs/promises'
-import { buildOutput, compRoot } from '../utils/paths'
+import { buildOutput, esOutput, libOutput, compRoot } from '../utils/paths'
 import { getComponents } from '../utils/components'
 
 // 生成样式入口文件
@@ -29,14 +29,14 @@ export const loadComponentStyle = (componentName) => {
 export default '../them-chalk/index.css'
 `
 
-    // 写入样式映射文件
+    // 写入样式映射文件 - 修改为 esm 目录
     await fs.writeFile(
-      path.resolve(buildOutput, 'es/style-entry.js'),
+      path.resolve(esOutput, 'style-entry.js'),
       styleMapping
     )
     
     await fs.writeFile(
-      path.resolve(buildOutput, 'lib/style-entry.js'),
+      path.resolve(libOutput, 'style-entry.js'),
       styleMapping.replace(/export default/g, 'module.exports =')
     )
     

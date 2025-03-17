@@ -41,14 +41,26 @@ export const buildComponents = withTaskName('buildComponents', async () => {
 // 生成类型定义
 export const genTypes = withTaskName('genTypes', async () => {
   try {
+    // 确保输出目录存在
+    fs.mkdirSync(path.resolve(buildOutput, 'types'), { recursive: true })
+    
     // 使用 vue-tsc 生成类型声明文件
     await run('vue-tsc', [
       '--skipLibCheck',
       '--declaration',
       '--emitDeclarationOnly',
+      '--outDir', path.resolve(buildOutput, 'types'),  // 明确指定输出目录为 dist/types
       '--project',
       path.resolve(xComponentsRoot, 'tsconfig.json')
     ])
+    
+    // 检查类型是否生成成功
+    const typesDir = path.resolve(buildOutput, 'types')
+    if (!fs.existsSync(typesDir)) {
+      console.warn(`警告: 类型生成可能失败，目录不存在: ${typesDir}`)
+    } else {
+      console.log(`类型定义文件成功生成到: ${typesDir}`)
+    }
   } catch (error) {
     console.warn('类型生成出错，但构建将继续进行:', error)
   }
@@ -57,19 +69,20 @@ export const genTypes = withTaskName('genTypes', async () => {
 // 复制类型定义文件
 export const copyTypes = withTaskName('copyTypes', async () => {
   try {
-    const src = path.resolve(buildOutput, 'types', 'packages')
+    const src = path.resolve(buildOutput, 'types')
     const copy = async (module: Module) => {
       const output = path.resolve(buildOutput, module)
-      // 使用我们自定义的 run 函数，它会在 Windows 上正确处理 cp 命令
-      await run('cp', ['-r', src, output])
+      // 检查源目录是否存在
+      if (fs.existsSync(src)) {
+        // 使用我们自定义的 run 函数，它会在 Windows 上正确处理 cp 命令
+        await run('cp', ['-r', src, output])
+      } else {
+        console.warn(`警告: 类型定义目录不存在: ${src}`)
+        console.error(`错误: 无法找到类型定义文件，请确保 vue-tsc 命令成功执行`)
+      }
     }
     
-    // 检查源目录是否存在
-    if (fs.existsSync(src)) {
-      await Promise.all([copy('esm'), copy('cjs')])
-    } else {
-      console.warn(`警告: 类型定义目录不存在: ${src}`)
-    }
+    await Promise.all([copy('esm'), copy('cjs')])
   } catch (error) {
     console.warn('复制类型定义文件出错，但构建将继续进行:', error)
   }
@@ -129,11 +142,12 @@ export const genPackageJson = withTaskName('genPackageJson', async () => {
 // 清理多余的文件和目录
 export const cleanExtraFiles = withTaskName('cleanExtraFiles', async () => {
   const { rimraf } = await import('rimraf')
-  // 删除不需要的目录
+  // 删除不需要的目录，但保留类型定义
   await rimraf(path.resolve(buildOutput, 'packages'))
   await rimraf(path.resolve(buildOutput, 'play'))
-  await rimraf(path.resolve(buildOutput, 'types'))
-  await rimraf(path.resolve(buildOutput, 'build')) // 添加对 build 目录的清理
+  // 不要删除 types 目录，直到确认类型已经被复制到正确位置
+  // await rimraf(path.resolve(buildOutput, 'types'))
+  await rimraf(path.resolve(buildOutput, 'build'))
   
   // 不使用通配符，只删除主要目录中的临时文件
   try {

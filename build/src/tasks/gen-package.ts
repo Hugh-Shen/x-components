@@ -22,25 +22,25 @@ export const generatePackageJson = async () => {
       version: (pkg as { version?: string })?.version || '1.0.0',
       description: 'A Vue 3 UI Component Library',
       main: 'lib/index.js',
-      module: 'es/index.js',
+      module: 'esm/index.js', // 确保使用 esm
       types: 'index.d.ts',
       style: 'them-chalk/index.css',
       exports: {
         '.': {
           types: './index.d.ts',
-          import: './es/index.js',
+          import: './esm/index.js', // 确保使用 esm
           require: './lib/index.js'
         },
-        './es': './es/index.js',
+        './esm': './esm/index.js', // 确保使用 esm
         './lib': './lib/index.js',
-        './es/*': './es/*',
+        './esm/*': './esm/*', // 确保使用 esm
         './lib/*': './lib/*',
         './them-chalk': './them-chalk/index.css',
         './them-chalk/*': './them-chalk/*',
         './package.json': './package.json'
       },
       files: [
-        'es',
+        'esm', // 确保使用 esm
         'lib',
         'them-chalk',
         'index.d.ts',
@@ -57,7 +57,7 @@ export const generatePackageJson = async () => {
       },
       sideEffects: [
         'them-chalk/**/*.css',
-        'es/**/style/*',
+        'esm/**/style/*', // 确保使用 esm
         'lib/**/style/*'
       ]
     }

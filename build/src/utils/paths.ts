@@ -12,7 +12,7 @@ export const compRoot = resolve(pkgRoot, 'components')
 export const themeRoot = resolve(pkgRoot, 'them-chalk') // 修改为 them-chalk 而不是 theme-chalk
 // 输出目录
 export const buildOutput = resolve(projRoot, 'dist')
-// ES模块输出目录
-export const esOutput = resolve(buildOutput, 'es')
+// ES模块输出目录 - 修改为 esm
+export const esOutput = resolve(buildOutput, 'esm')
 // CommonJS输出目录
 export const libOutput = resolve(buildOutput, 'lib')
