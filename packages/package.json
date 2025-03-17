@@ -1,0 +1,43 @@
+{
+  "name": "x-components",
+  "version": "1.0.0",
+  "description": "A Vue 3 UI Component Library",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "index.d.ts",
+  "style": "theme-chalk/index.css",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./es/index.js",
+      "require": "./lib/index.js"
+    },
+    "./es": "./es/index.js",
+    "./lib": "./lib/index.js",
+    "./es/*": "./es/*",
+    "./lib/*": "./lib/*",
+    "./theme-chalk/*": "./theme-chalk/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "es",
+    "lib",
+    "theme-chalk",
+    "index.d.ts",
+    "global.d.ts"
+  ],
+  "keywords": [
+    "vue",
+    "vue3",
+    "components",
+    "ui"
+  ],
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "sideEffects": [
+    "theme-chalk/**/*.css",
+    "es/**/style/*",
+    "lib/**/style/*"
+  ]
+}

@@ -1,36 +1,34 @@
 {
   "compilerOptions": {
-    // 编译目标为 ESNext
     "target": "ESNext",
-    // 使用 ES 模块
     "module": "ESNext",
-    // 模块解析策略
     "moduleResolution": "node",
-    // 设置 Vue 文件的编译支持
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    // 启用严格模式
     "strict": true,
-    // 在编译 TypeScript 类时，是否为字段启用 ESNext 的定义语义
-    "useDefineForClassFields": true,
-    // 支持 JSX 语法
     "jsx": "preserve",
-    // 输出目录
+    "sourceMap": false,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "declarationDir": "./dist/types",
     "outDir": "./dist",
-    // 在编译时检查 `null` 和 `undefined`
-    "strictNullChecks": true,
-    // 用于扩展类型的文件或模块
-    "types": ["vite/client", "node"],
-    // 路径别名
+    "skipLibCheck": true,
     "baseUrl": ".",
-    // "paths": {
-    //   "@/*": ["src/*"]
-    // },
-    // 禁止隐式 any 类型
-    "noImplicitAny": true
+    "paths": {
+      "@xc/*": ["packages/*"]
+    }
   },
+  "include": [
+    "packages/**/*.ts",
+    "packages/**/*.d.ts",
+    "packages/**/*.tsx",
+    "packages/**/*.vue",
+    "typings/**/*.d.ts"
+  ],
   "exclude": [
     "node_modules",
-    "dist/**",
+    "dist",
+    "play",
+    "docs",
+    "build"
   ]
 }

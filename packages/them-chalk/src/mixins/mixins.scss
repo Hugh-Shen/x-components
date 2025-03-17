@@ -11,7 +11,7 @@
 
 @mixin e($element) {
   @at-root {
-    #{& + $element-soparator + $element} {
+    #{& + $element-separator + $element} {
       @content;
     }
   }
@@ -19,7 +19,7 @@
 
 @mixin m($modifier) {
   @at-root {
-    #{& + $modifior-soparator + $modifier} {
+    #{& + $modifier-separator + $modifier} {
       @content;
     }
   }
