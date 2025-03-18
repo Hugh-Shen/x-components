@@ -7,7 +7,6 @@ import esbuild from 'rollup-plugin-esbuild'
 import glob from 'fast-glob'
 import { compRoot, buildOutput, pkgRoot } from '../utils/paths'
 import { excludeFiles } from '../build-info'
-import { pathRewriter } from '../utils/gulp'
 import type { OutputOptions } from 'rollup'
 import type { Module, BuildInfo } from '../build-info'
 

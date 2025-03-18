@@ -9,7 +9,7 @@ export const pkgRoot = resolve(projRoot, 'packages')
 // 组件目录
 export const compRoot = resolve(pkgRoot, 'components')
 // 主题样式目录
-export const themeRoot = resolve(pkgRoot, 'them-chalk') // 修改为 them-chalk 而不是 theme-chalk
+export const themeRoot = resolve(pkgRoot, 'them-chalk')
 // 输出目录
 export const buildOutput = resolve(projRoot, 'dist')
 // ES模块输出目录 - 修改为 esm

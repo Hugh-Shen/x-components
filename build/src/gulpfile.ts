@@ -1,4 +1,5 @@
 import path from 'path'
+import fs from 'fs'
 import { series, parallel } from 'gulp'
 import { run } from './utils/process'
 import { withTaskName, pathRewriter } from './utils/gulp'
@@ -49,8 +50,9 @@ export const genTypes = withTaskName('genTypes', async () => {
       '--skipLibCheck',
       '--declaration',
       '--emitDeclarationOnly',
-      '--outDir', path.resolve(buildOutput, 'types'),  // 明确指定输出目录为 dist/types
+      '--outDir',
       '--project',
+      path.resolve(buildOutput, 'types'),  // 明确指定输出目录为 dist/types
       path.resolve(xComponentsRoot, 'tsconfig.json')
     ])
     
@@ -185,6 +187,3 @@ export default series(
   genPackageJson,
   cleanExtraFiles
 )
-
-// 需要导入 fs 模块
-import fs from 'fs'
